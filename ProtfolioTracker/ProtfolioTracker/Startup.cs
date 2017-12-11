@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace ProtfolioTracker
 {
@@ -24,6 +25,11 @@ namespace ProtfolioTracker
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddSwaggerGen((c)=> 
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Protfolio tracker API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,6 +39,12 @@ namespace ProtfolioTracker
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseMvc();
         }
