@@ -12,6 +12,10 @@ namespace ProtfolioTracker
 {
     public class Program
     {
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();
