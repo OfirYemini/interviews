@@ -1,18 +1,22 @@
+import { PositionComponent } from './position.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { PositionService } from './position.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,PositionComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    PositionService,HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
