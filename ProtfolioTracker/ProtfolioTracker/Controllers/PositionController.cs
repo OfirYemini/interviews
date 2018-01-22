@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http.Cors;
+using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ProtfolioTracker.Controllers
@@ -10,12 +11,17 @@ namespace ProtfolioTracker.Controllers
     [Route("api/[controller]")]
     public class PositionController : Controller
     {
+        private readonly IPositionRepository _repo;
+        public PositionController(IPositionRepository repo)
+        {
+            _repo = repo ?? throw new NullReferenceException("IPositionRepository is null");
+        }
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<ITransaction> Get()
         {
-            return new string[] { "value1", "value2" };
-            //Dictionary<>
+            //return new string[] { "value1", "value2" };
+            return _repo.GetPosition(1);
         }
 
         // GET api/values/5

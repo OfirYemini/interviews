@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using ProtfolioTracker.Repos;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace ProtfolioTracker
@@ -31,6 +33,8 @@ namespace ProtfolioTracker
             {
                 c.SwaggerDoc("v1", new Info { Title = "Protfolio tracker API", Version = "v1" });
             });
+
+            services.AddSingleton<IPositionRepository, PositionRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
