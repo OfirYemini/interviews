@@ -10,7 +10,7 @@ export class PositionService{
     }
 
     getTransactions() {
-        
-        return ["trans1","trans2",this.apiUrl];
+        return this.http.get<Array<string>>(this.apiUrl + "position");
+        //return ["trans1","trans2",this.apiUrl];
     }
 }

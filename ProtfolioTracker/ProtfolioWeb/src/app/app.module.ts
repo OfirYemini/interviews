@@ -5,6 +5,8 @@ import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from
 
 import { AppComponent } from './app.component';
 import { PositionService } from './position.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -12,7 +14,8 @@ import { PositionService } from './position.service';
     AppComponent,PositionComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [
     PositionService,HttpClient
