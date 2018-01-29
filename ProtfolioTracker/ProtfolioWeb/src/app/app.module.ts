@@ -6,6 +6,7 @@ import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from
 import { AppComponent } from './app.component';
 import { PositionService } from './position.service';
 import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material';
 
 
 
@@ -15,7 +16,10 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
+    //MatTableDataSource, 
+    //MatSort
   ],
   providers: [
     PositionService,HttpClient
