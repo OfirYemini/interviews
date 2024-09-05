@@ -14,12 +14,12 @@ var stringQuestions = new StringsQuestions();
 //var solution = stringQuestions.LengthOfLongestSubstring2("kdgjkjhglfp"); // ascii array to hold last position of char
 
 var lruCache = new LRUCache(2);
-lruCache.Put(2, 1); // cache is {1=1}
-lruCache.Put(2, 2); // cache is {1=1, 2=2}
-var x = lruCache.Get(2);    // return 1
-lruCache.Put(1, 1); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
-lruCache.Put(4, 1); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
-x = lruCache.Get(2);    // return -1 (not found)
+lruCache.Put(2, 1); // cache is {2=1}
+lruCache.Put(1, 1); // cache is {2=1, 1=1}
+lruCache.Put(2, 3); // cache is {2=3, 1=1}
+lruCache.Put(4, 1); // cache is {1=1, 2=2}
+var x = lruCache.Get(1);    // return 1
+x = lruCache.Get(2);    // return 1
 
     
 Console.WriteLine(lruCache.Get(4));// return 4
