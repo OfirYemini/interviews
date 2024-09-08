@@ -69,5 +69,74 @@ namespace DataStructuresExercises
             return maxLength;
         }
 
+        public bool IsValidParentheses(string s)
+        {
+            Stack<char> stack = new Stack<char>(s.Length);
+            char[] open = new char [3] { '[','(','{'};
+            char[] close = new char[3] { ']',')','}'};
+            bool res = true;
+            foreach (char ch in s)
+            {
+                var closeIndex = Array.IndexOf(close,ch);
+                if(closeIndex==-1)
+                {
+                    stack.Push(ch);
+                    continue;
+                }
+                if(stack.TryPop(out char lastChar) && lastChar == open[closeIndex])
+                {
+                    continue;
+                }
+                res = false;
+                break;
+            }
+            return stack.Count == 0 && res;
+        }
+
+        public IList<IList<string>> GroupAnagrams(string[] strs)
+        {
+            Dictionary<string, List<string>> output = new Dictionary<string, List<string>>();
+            foreach (var str in strs)
+            {
+                string sortedString = new string(str.OrderBy(c => c).ToArray());
+                if (!output.TryGetValue(sortedString, out var group))
+                {
+                    output[sortedString] = new List<string>() { str };
+                    continue;
+                }
+                group.Add(str);
+            }
+            return output.Select(kvp => new List<string>(kvp.Value)).ToList<IList<string>>();
+            
+        }
+
+        public IList<IList<string>> GroupAnagrams2(string[] strs)
+        {
+
+            Dictionary<int, List<string>> output = new Dictionary<int, List<string>>();
+            foreach (var str in strs)
+            {
+                var bitMask = CalcBitMask(str);
+                if (!output.TryGetValue(bitMask, out var group))
+                {
+                    output[bitMask] = new List<string>() { str };
+                    continue;
+                }
+                group.Add(str);
+            }
+            return output.Select(kvp => new List<string>(kvp.Value)).ToList<IList<string>>();
+
+        }
+
+        private int CalcBitMask(string str)
+        {
+            int bitMask = 0;
+            foreach (var ch in str)
+            {
+                var bitPosition = ch - 'a';
+                bitMask |= (1 << bitPosition);
+            }
+            return bitMask;
+        }
     }
 }
