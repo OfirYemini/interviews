@@ -27,8 +27,14 @@ var stringQuestions = new StringsQuestions();
 
 //Console.WriteLine(lruCache.Get(4));// return 4
 //Console.WriteLine(string.Join(",",solution));
-int[] data = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-int breadthSize = 3;  // Each node can have up to 3 children
+int[] data = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14 };
+int breadthSize = 2;  // Each node can have up to 3 children
 
 TreeNode<int> root = data.BuildTree(breadthSize);
 TreeExtensions.PrintTree(root);
+root.BreadthFirstSearch((num) => { 
+    Console.WriteLine($"got to num {num}");    
+},7);
+root.DeepFirstSearch((num) => {
+    Console.WriteLine($"got to num {num}");
+}, 7);
