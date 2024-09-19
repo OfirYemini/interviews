@@ -3,6 +3,7 @@ using Arrays;
 using Arrays.LinkedLists;
 using DataStructuresExercises;
 using DataStructuresExercises.Graphs;
+using DataStructuresExercises.Matrix;
 using DataStructuresExercises.Trees;
 using System.Reflection.Emit;
 
@@ -41,4 +42,5 @@ int breadthSize = 2;  // Each node can have up to 3 children
 //}, 7);
 
 //TreeQuestions.Execute();
-GraphQuestions.ExecuteDijkstra();
+//GraphQuestions.ExecuteDijkstra();
+//MatrixQuestions.Execute();
