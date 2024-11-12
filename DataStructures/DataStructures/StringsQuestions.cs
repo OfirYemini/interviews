@@ -138,5 +138,40 @@ namespace DataStructuresExercises
             }
             return bitMask;
         }
+        
+        // public static string FindMaxPolindrome(string input)
+        // {// "abba", "aba", "bbb"
+        //     if (string.IsNullOrEmpty(input)) return 0;
+        //     if (input.Length == 1) return 1;
+        //
+        //     int startPosition = 0;
+        //     string maxPolindrome = "";
+        //     while (startPosition < input.Length)
+        //     {
+        //         int right = startPosition + 1;
+        //         string currentPolindrome = GetCurrentPolindromeLength(input, startPosition, right, 0); // even
+        //         maxPolindrome = maxPolindrome.Length < currentPolindrome.Length ? currentPolindrome : maxPolindrome;
+        //     
+        //         currentPolindrome = GetCurrentPolindromeLength(input, startPosition -1 , right, 1); //odd
+        //         maxPolindrome = maxPolindrome.Length < currentPolindrome.Length ? currentPolindrome : maxPolindrome;
+        //         startPosition++;
+        //     }
+        //
+        //     return maxPolindrome;
+        // }
+        //
+        // private static string GetCurrentPolindromeLength(string input, int left, int right, int currentPolindromeLength)
+        // {
+        //     bool isInRange = left >= 0 && right < input.Length;
+        //     while (isInRange && input [left] == input[right])
+        //     {
+        //         left--;
+        //         right++;
+        //         currentPolindromeLength+=2;
+        //         isInRange = left >= 0 && right < input.Length;
+        //     }
+        //
+        //     return input.Substring(left, currentPolindromeLength);
+        // }
     }
 }
